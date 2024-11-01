@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>OnwinTOP</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noimageindex, nofollow,noindex">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.13/dist/semantic.min.css">
+    <link href="/public/dflip/css/dflip.min.css" rel="stylesheet" type="text/css">
+    <link href="/public/dflip/css/themify-icons.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/public/plugins/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="/public/plugins/ionicons/dist/css/ionicons.min.css">
+    <link rel="stylesheet" href="/public/plugins/icon-kit/dist/css/iconkit.min.css">
+    <link rel="stylesheet" href="/public/plugins/perfect-scrollbar/css/perfect-scrollbar.css">
+    <link rel="stylesheet" href="/public/plugins/summernote/dist/summernote-bs4.css">
+    <link rel="stylesheet" href="/public/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
+    <link rel="stylesheet" href="/public/plugins/mohithg-switchery/dist/switchery.min.css">
+    <link rel="stylesheet" href="/public/dist/css/theme.min.css">
+    <script src="/src/js/vendor/modernizr-2.8.3.min.js"></script>
+    <link rel="stylesheet" href="/public/plugins/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="/public/plugins/select2/dist/css/select2.min.css">
+
+    <style>
+        .nav-active {
+            border-bottom: 3px solid #111111;
+        }
+
+        .nav-active-success {
+            border-bottom: 3px solid #2dce89;
+            text-decoration: none;
+            color: #2dce89 !important;
+        }
+
+        .green-checkbox input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #e0f8eb;
+            border-radius: 4px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .green-checkbox input[type="checkbox"]:checked~.check-text {
+            background-color: #e0f8eb;
+        }
+
+        .rate {
+            float: left;
+            height: 46px;
+            padding: 0 10px;
+        }
+
+        .rate:not(:checked)>input {
+            position: absolute;
+            top: -9999px;
+        }
+
+        .rate:not(:checked)>label {
+            float: right;
+            width: 1em;
+            overflow: hidden;
+            white-space: nowrap;
+            cursor: pointer;
+            font-size: 30px;
+            color: #ccc;
+        }
+
+        .rate:not(:checked)>label:before {
+            content: '★ ';
+        }
+
+        .rate>input:checked~label {
+            color: #ffc700;
+        }
+
+        .rate:not(:checked)>label:hover,
+        .rate:not(:checked)>label:hover~label {
+            color: #deb217;
+        }
+
+        .rate>input:checked+label:hover,
+        .rate>input:checked+label:hover~label,
+        .rate>input:checked~label:hover,
+        .rate>input:checked~label:hover~label,
+        .rate>label:hover~input:checked~label {
+            color: #c59b08;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid px-0" style="height: 100vh; background-color: #111111;">
+        <div class="row">
+            <div class="col-lg-12">
+                <nav class="navbar navbar-expand-lg" style="background-color: #111111;">
+                    <!-- <div id="navbarNavAltMarkup w-100"> -->
+                    <div class="navbar-nav w-100">
+                        <div class="w-75 d-flex justify-content-between">
+                            <h5 class="nav-item nav-link px-4 py-4 text-white" href="#">
+                                Sony Skins
+                            </h5>
+                        </div>
+                        <div class="" style="margin-top: 15px;">
+                            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                                <div class="btn-group mr-2" role="group" aria-label="First group">
+                                    <button type="button" class="btn btn-secondary"
+                                        style="border-right: 1px solid black !important;"><i
+                                            class="fa-regular fa-circle-play"></i> Tutorial</button>
+                                    <button type="button" class="btn btn-secondary"><i
+                                            class="fa-solid fa-book-open"></i> Help center</button>
+                                </div>
+                                <div class="btn-group mr-2" role="group" aria-label="Second group">
+                                    <button type="button" class="btn btn-secondary"><i
+                                            class="fa-solid fa-arrow-left"></i></button>
+                                    <button type="button" class="btn btn-secondary"><i
+                                            class="fa-solid fa-arrow-right"></i></button>
+                                </div>
+                                <div class="btn-group" role="group" aria-label="Third group">
+                                    <button type="button" class="btn btn-secondary"><i
+                                            class="fa-solid fa-xmark"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- </div> -->
+                </nav>
+                <nav class="navbar navbar-expand-lg" style="background-color: #111111;">
+                    <div id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                            <a class="nav-item nav-link px-4 nav-active-success toogle-active-success text-white"
+                                onclick="toggleGreen(this)" href="#">
+                                <h5>
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                    Shoppable Products
+                                </h5>
+                            </a>
+                            <a class="nav-item nav-link px-4 toogle-active-success text-white"
+                                onclick="toggleGreen(this)" href="#" data-toggle="modal" data-target="#exampleModalSettings">
+                                <h5>
+                                    <i class="fa-solid fa-gear"></i>
+                                    Settings
+                                </h5>
+                            </a>
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModalSettings" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalSettingsTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document"
+                                    style="min-width: 150vh;">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            <div class="row">
+                                                <div class="col-lg-6 text-center mx-2"
+                                                    style="background-color: #f5f5f6; min-height: 80vh; margin-left: 0 !important; margin-right: 0 !important;">
+                                                    <div class="btn-group btn-group-lg my-4 mr-2" role="group">
+                                                        <button type="button" class="btn text-white"
+                                                            style="background-color: #6c58fb; padding: 3px 30px;">View</button>
+                                                        <button type="button" class="btn"
+                                                            style="background-color: #e0e1e2; padding: 3px 30px;">Trim</button>
+                                                    </div>
+                                                    <div class="card">
+                                                        <video width="100%" height="250vh" controls preload="auto">
+                                                            <source src="movie.mp4" type="video/mp4">
+                                                        </video>
+                                                    </div>
+                                                    <div class="text-center">
+                                                        <h5 class="text-secondary">
+                                                            <strong>Date video posted</strong>
+                                                        </h5>
+                                                        <h5 class="text-dark">
+                                                            <strong>4 Jun 2020</strong>
+                                                        </h5>
+                                                        <button type="button" class="btn text-white"
+                                                            style="background-color: #13195a; padding: 3px 30px;">Download
+                                                            Video</button>
+                                                    </div>
+                                                    <div class="footer" style="padding-top: 80px;">
+                                                        <button type="button" class="btn text-dark"
+                                                            style="background-color: #e0e1e2; padding: 3px 30px;">Disapprove</button>
+                                                        <button type="button" class="btn text-white"
+                                                            style="background-color: #6c58fb; padding: 3px 30px;">Approve</button>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <h3 class="text-dark"><strong>Clip information</strong></h3>
+                                                    <ul class="nav mx-3" style="border-bottom: 1px solid grey;">
+                                                        <li class="nav-item toogle-active nav-active"
+                                                            onclick="toggleHighlight(this)">
+                                                            <h5 class="text-dark">
+                                                                <a class="nav-link" href="#">Contributors inputs</a>
+                                                            </h5>
+                                                        </li>
+                                                        <li class="nav-item toogle-active"
+                                                            onclick="toggleHighlight(this)">
+                                                            <h5 class="text-dark">
+                                                                <a class="nav-link" href="#">Additional information</a>
+                                                            </h5>
+                                                        </li>
+                                                    </ul>
+                                                    <form class="my-4">
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-6">
+                                                                <label for="inputname4">Name</label>
+                                                                <input type="text" class="form-control" id="inputname4"
+                                                                    placeholder="Name">
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                <label for="inputemail4">Email</label>
+                                                                <input type="email" class="form-control"
+                                                                    id="inputemail4" placeholder="Email">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="info1">Tell us what is happening in this
+                                                                video</label>
+                                                            <input type="text" class="form-control" id="info1"
+                                                                placeholder="Test">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="info2">Anything else do you want to add?</label>
+                                                            <input type="text" class="form-control" id="info2"
+                                                                placeholder="Test">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="info3">What do you like the most about
+                                                                us?</label>
+                                                            <input type="text" class="form-control" id="info3"
+                                                                placeholder="Test">
+                                                        </div>
+                                                        <div class="form-group rate">
+                                                            <input type="radio" id="star5" name="rate" value="5" />
+                                                            <label for="star5" title="text">5 stars</label>
+                                                            <input type="radio" id="star4" name="rate" value="4" />
+                                                            <label for="star4" title="text">4 stars</label>
+                                                            <input type="radio" id="star3" name="rate" value="3" />
+                                                            <label for="star3" title="text">3 stars</label>
+                                                            <input type="radio" id="star2" name="rate" value="2" />
+                                                            <label for="star2" title="text">2 stars</label>
+                                                            <input type="radio" id="star1" name="rate" value="1" />
+                                                            <label for="star1" title="text">1 star</label>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" id="loc"
+                                                                placeholder="Select a location...">
+                                                        </div>
+                                                        <div class="text-center">
+                                                            <button type="button" class="btn"
+                                                                style="background-color: #e0e1e2; padding: 3px 30px;"
+                                                                data-dismiss="modal">Close</button>
+                                                            <button type="button" class="btn text-white"
+                                                                style="background-color: #6c58fb; padding: 3px 30px;">Update</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="nav-item nav-link px-4 toogle-active-success text-white"
+                                onclick="toggleGreen(this)" href="#">
+                                <h5>
+                                    <i class="fa-regular fa-circle-play"></i>
+                                    Thumbnail
+                                </h5>
+                            </a>
+                        </div>
+                    </div>
+                </nav>
+                <div class="row">
+                    <div class="col-lg-6" style="padding-right: 1px;">
+                        <div class="card bg-dark" style="height: 80vh;">
+                            <div class="card-body text-center">
+                                <h4 class="text-center text-white mt-5">
+                                    <strong>
+                                        Add shoppable products or links
+                                    </strong>
+                                </h4>
+                                <h5 class="text-center text-secondary">
+                                    <strong>
+                                        Add multiple product 1-click shoppable in the video or add
+                                        custom links
+                                    </strong>
+                                </h5>
+                                <button class="btn btn-lg btn-success" data-toggle="modal"
+                                    data-target="#interactionmodal"><i class="fa-solid fa-plus"></i> ADD
+                                    INTERACTION</button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="interactionmodal" tabindex="-1" role="dialog"
+                                    aria-labelledby="interactionmodalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title text-dark" id="interactionmodalLabel"><strong>Add
+                                                        Interaction</strong></h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <ul class="nav mx-3">
+                                                <li class="nav-item toogle-active nav-active"
+                                                    onclick="toggleHighlight(this)">
+                                                    <h5 class="text-dark">
+                                                        <a class="nav-link" href="#">Shoppable Products</a>
+                                                    </h5>
+                                                </li>
+                                                <li class="nav-item toogle-active" onclick="toggleHighlight(this)">
+                                                    <h5 class="text-dark">
+                                                        <a class="nav-link" href="#">Link</a>
+                                                    </h5>
+                                                </li>
+                                            </ul>
+                                            <form class="form-inline mx-3 my-3">
+                                                <input class="form-control w-100" type="search"
+                                                    placeholder="Find Products" aria-label="Search">
+                                            </form>
+                                            <div class="modal-body">
+                                                <ul class="list-group list-group-flush">
+                                                    <li class="list-group-item check-text" style="text-align: left;">
+                                                        <div class="custom-control custom-checkbox green-checkbox">
+                                                            <input type="checkbox" class="custom-control-input"
+                                                                id="customCheck1">
+                                                            <label class="custom-control-label" for="customCheck1">
+                                                                <ul class="list-inline">
+                                                                    <li class="list-inline-item">
+                                                                        <img src="https://dummyimage.com/30x30/000/fff.jpg"
+                                                                            alt="" class="img-fluid">
+                                                                    </li>
+                                                                    <li class="list-inline-item">Camera A6000 Skins</li>
+                                                                </ul>
+                                                            </label>
+                                                        </div>
+                                                    </li>
+                                                    <li class="list-group-item check-text" style="text-align: left;">
+                                                        <div class="custom-control custom-checkbox green-checkbox">
+                                                            <input type="checkbox" class="custom-control-input"
+                                                                id="customCheck2">
+                                                            <label class="custom-control-label" for="customCheck2">
+                                                                <ul class="list-inline">
+                                                                    <li class="list-inline-item">
+                                                                        <img src="https://dummyimage.com/30x30/000/fff.jpg"
+                                                                            alt="" class="img-fluid">
+                                                                    </li>
+                                                                    <li class="list-inline-item">Camera S7SIII Skins
+                                                                    </li>
+                                                                </ul>
+                                                            </label>
+                                                        </div>
+                                                    </li>
+                                                    <li class="list-group-item check-text" style="text-align: left;">
+                                                        <div class="custom-control custom-checkbox green-checkbox">
+                                                            <input type="checkbox" class="custom-control-input"
+                                                                id="customCheck3">
+                                                            <label class="custom-control-label" for="customCheck3">
+                                                                <ul class="list-inline">
+                                                                    <li class="list-inline-item">
+                                                                        <img src="https://dummyimage.com/30x30/000/fff.jpg"
+                                                                            alt="" class="img-fluid">
+                                                                    </li>
+                                                                    <li class="list-inline-item">Camera A6000 Skins</li>
+                                                                </ul>
+                                                            </label>
+                                                        </div>
+                                                    </li>
+                                                    <li class="list-group-item check-text" style="text-align: left;">
+                                                        <div class="custom-control custom-checkbox green-checkbox">
+                                                            <input type="checkbox" class="custom-control-input"
+                                                                id="customCheck4">
+                                                            <label class="custom-control-label" for="customCheck4">
+                                                                <ul class="list-inline">
+                                                                    <li class="list-inline-item">
+                                                                        <img src="https://dummyimage.com/30x30/000/fff.jpg"
+                                                                            alt="" class="img-fluid">
+                                                                    </li>
+                                                                    <li class="list-inline-item">Camera A6000 Skins</li>
+                                                                </ul>
+                                                            </label>
+                                                        </div>
+                                                    </li>
+                                                    <li class="list-group-item check-text" style="text-align: left;">
+                                                        <div class="custom-control custom-checkbox green-checkbox">
+                                                            <input type="checkbox" class="custom-control-input"
+                                                                id="customCheck5">
+                                                            <label class="custom-control-label" for="customCheck5">
+                                                                <ul class="list-inline">
+                                                                    <li class="list-inline-item">
+                                                                        <img src="https://dummyimage.com/30x30/000/fff.jpg"
+                                                                            alt="" class="img-fluid">
+                                                                    </li>
+                                                                    <li class="list-inline-item">Camera A6000 Skins</li>
+                                                                </ul>
+                                                            </label>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-success">Add Products</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6" style="padding-left: 1px;">
+                        <div class="card bg-dark" style="height: 80vh;">
+                            <div class="card-body">
+                                <video width="100%" height="400vh" controls preload="auto">
+                                    <source src="movie.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        window.jQuery || document.write('<script src="/src/js/vendor/jquery-3.3.1.min.js"><\/script>')
+    </script>
+    <script src="/public/plugins/popper.js/dist/umd/popper.min.js"></script>
+    <script src="/public/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/public/plugins/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
+    <script src="/public/plugins/select2/dist/js/select2.min.js"></script>
+    <script src="/public/plugins/summernote/dist/summernote-bs4.min.js"></script>
+    <script src="/public/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
+    <script src="/public/plugins/jquery.repeater/jquery.repeater.min.js"></script>
+    <script src="/public/plugins/mohithg-switchery/dist/switchery.min.js"></script>
+    <script src="/public/dist/js/theme.min.js"></script>
+    <script src="/public/js/form-advanced.js"></script>
+    <script src="/public/plugins/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="/public/plugins/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="/public/js/datatables.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.13/dist/semantic.min.js"></script>
+    <script src="/public/dflip/js/dflip.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.5/pagination.css"
+        integrity="sha512-QmxybGIvkSI8+CGxkt5JAcGOKIzHDqBMs/hdemwisj4EeGLMXxCm9h8YgoCwIvndnuN1NdZxT4pdsesLXSaKaA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        const dropdown = document.getElementsByClassName("dropdown-btn");
+        for (let i = 0; i < dropdown.length; i++) {
+            dropdown[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                let dropdownContent = this.nextElementSibling;
+                if (dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                } else {
+                    dropdownContent.style.display = "block";
+                }
+            });
+        }
+    </script>
+    <script>
+        function toggleHighlight(item) {
+            const navbarItems = document.querySelectorAll('.toogle-active');
+            navbarItems.forEach(navbarItem => {
+                navbarItem.classList.remove('nav-active');
+            });
+            item.classList.add('nav-active');
+        }
+        function toggleGreen(item) {
+            const navbarItems = document.querySelectorAll('.toogle-active-success');
+            const fontColor = document.querySelectorAll('.text-green');
+            navbarItems.forEach(navbarItem => {
+                navbarItem.classList.remove('nav-active-success');
+            });
+            item.classList.add('nav-active-success');
+        }
+    </script>
+    <script>
+        // Get all the checkboxes and corresponding labels
+        const checkboxes = document.querySelectorAll('.custom-control-input');
+        const labels = document.querySelectorAll('.check-text');
+
+        // Add event listeners to each checkbox
+        checkboxes.forEach((checkbox, index) => {
+            checkbox.addEventListener('change', () => {
+                if (checkbox.checked) {
+                    labels[index].style.backgroundColor = '#e0f8eb';
+                } else {
+                    labels[index].style.backgroundColor = '';
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

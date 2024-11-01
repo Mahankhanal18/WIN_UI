@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>OnwinTOP</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noimageindex, nofollow,noindex">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.13/dist/semantic.min.css">
+    <link href="/public/dflip/css/dflip.min.css" rel="stylesheet" type="text/css">
+    <link href="/public/dflip/css/themify-icons.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/public/plugins/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="/public/plugins/ionicons/dist/css/ionicons.min.css">
+    <link rel="stylesheet" href="/public/plugins/icon-kit/dist/css/iconkit.min.css">
+    <link rel="stylesheet" href="/public/plugins/perfect-scrollbar/css/perfect-scrollbar.css">
+    <link rel="stylesheet" href="/public/plugins/summernote/dist/summernote-bs4.css">
+    <link rel="stylesheet" href="/public/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
+    <link rel="stylesheet" href="/public/plugins/mohithg-switchery/dist/switchery.min.css">
+    <link rel="stylesheet" href="/public/dist/css/theme.min.css">
+    <script src="/src/js/vendor/modernizr-2.8.3.min.js"></script>
+    <link rel="stylesheet" href="/public/plugins/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="/public/plugins/select2/dist/css/select2.min.css">
+    <style>
+        .modal-body {
+            max-height: calc(100vh - 200px);
+            overflow-y: auto;
+        }
+
+        .modal1 {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal1-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+        }
+
+        .close1 {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close1:hover,
+        .close1:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        @media (min-width: 576px) {
+            .modal1-content {
+                max-width: 600px;
+                margin: 1.75rem auto;
+            }
+        }
+
+        .select2-selection {
+            width: 500px !important;
+        }
+
+        .nav-active {
+            border-bottom-width: 4px;
+            border-bottom-style: solid;
+        }
+
+        .search {
+            border-left: none !important;
+            border-color: #343a40;
+            border-radius: 1px !important;
+        }
+
+        .btn-search {
+            border-right: none !important;
+            border-radius: 1px !important;
+            height: 37px !important
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <header class="header-top" header-theme="light" style="padding-left: 0px !important;">
+            <div class="container-fluid">
+                <div class="d-flex justify-content-between">
+                    <div class="top-menu d-flex align-items-center">
+                        <button type="button" class="btn-icon mobile-nav-toggle d-lg-none"><span></span></button>
+                    </div>
+                    <div class="container-fluid">
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#">Video</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Discussion</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Engagement</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Rewards</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="top-menu d-flex align-items-center">
+                        <div class="dropdown">
+                            <a class="dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false"><img class="avatar"
+                                    src="/public/img/user.jpg" alt=""></a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="#"><i class="ik ik-power dropdown-icon"></i>
+                                    Logout</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="page-wrap">
+            <div class="app-sidebar colored" style="top: 8.6vh;">
+                <div class="sidebar-header" style="background-color: #000000;">
+                    <a class="header-brand" href="/">
+                        <h2 class="text-center">
+                            <strong>
+                                Onwin<span class="text" style="color: #00c8f8;">TOP</span>
+                            </strong>
+                        </h2>
+                    </a>
+                </div>
+
+                <div class="sidebar-content" style="background-color: #111111;">
+                    <div class="nav-container">
+                        <nav id="main-menu-navigation" class="navigation-main">
+                            <div class="nav-item">
+                                <a href="#"><i class="fa-regular fa-folder"></i> <span>Manage</span></a>
+                            </div>
+                            <div class="nav-item">
+                                <a href="#" class="menu-item">
+                                    <i class="fa-solid fa-clipboard-list"></i> <span>Plan</span>
+                                </a>
+                            </div>
+                            <div class="nav-item">
+                                <a href="#" class="menu-item">
+                                    <i class="fa-solid fa-bag-shopping"></i> <span>Engage</span>
+                                </a>
+                            </div>
+                            <div class="nav-item">
+                                <a href="#" class="menu-item">
+                                    <i class="fa-solid fa-chart-line"></i> <span>Analyze</span>
+                                </a>
+                            </div>
+                            <hr class="border opacity-50" style="border: 1px solid #181818 !important;">
+                            <div class="nav-item">
+                                <a href="#"><i class="fa-solid fa-gear"></i> <span>Settings</span></a>
+                            </div>
+                            <div class="nav-item">
+                                <a href="#" class="menu-item">
+                                    <i class="fa-solid fa-dollar-sign"></i> <span>Pricing</span>
+                                </a>
+                            </div>
+                            <div class="nav-item">
+                                <a href="#" class="menu-item">
+                                    <i class="fa-regular fa-star"></i> <span>Partners</span>
+                                </a>
+                            </div>
+                            <div class="nav-item">
+                                <a href="#" class="menu-item">
+                                    <i class="fa-solid fa-question"></i> <span>Support</span>
+                                </a>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="main-content" style="min-height: 100vh !important;">
+                <div class="container-fluid">
+                    <div class="page-header">
+                        <div class="row align-items-end">
+                            <div class="col-lg-12">
+                                <div class="page-header-title">
+                                    <h2 class="float-sm-left">Plan Video Production</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-header d-block">
+                                    <div class="clearfix">
+                                        <div class="float-left">
+                                            <a class="btn btn-info text-white" data-toggle="modal" data-target="#exampleModal">Create Production Plan</a>
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title" id="exampleModalLabel">Name your video project</h4>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form action="">
+                                                                <div class="form-group">
+                                                                    <label for="exampleInputName">Project name</label>
+                                                                    <input type="text" class="form-control" id="exampleInputName">
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">Close</button>
+                                                            <button type="button" class="btn text-white" style="background-color: #6c58fb;">Create Project</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="py-2">Click to get help to generate more branded videos faster</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <section class="container-fluid">
+                            <h2><strong>Plans List</strong></h2>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="float-left my-3">
+                                        <div class="row mx-2">
+                                            <div class="col px-1 text-dark text-center pt-2">Show</div>
+                                            <div class="col px-1 text-center" style="min-width: fit-content;">
+                                                <select class="custom-select">
+                                                    <option selected value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                </select>
+                                            </div>
+                                            <div class="col px-1 text-dark text-center pt-2">entries</div>
+                                        </div>
+                                    </div>
+                                    <div class="float-right my-3">
+                                        <form class="form-inline my-2 my-lg-0">
+                                            <input class="form-control mr-sm-2" type="search" placeholder="Search"
+                                                aria-label="Search">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <table class="table" style="background-color: #fff;">
+                                <thead>
+                                    <tr>
+                                        <!-- <th scope="col">#</th> -->
+                                        <th scope="col" class="text-dark">PLAN</th>
+                                        <th scope="col" class="text-dark">STATUS</th>
+                                        <th scope="col" class="text-dark">ACTION</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <!-- <th scope="row">1</th> -->
+                                        <td>
+                                            <h5 class="tetx-dark">
+                                                B2B Testimonial -21 May 2023
+                                            </h5>
+                                            <p>Created 14 July, 2021</p>
+                                        </td>
+                                        <td><span class="badge badge-primary">InActive</span></td>
+                                        <td>
+                                            <div class="btn-group" role="group" aria-label="Basic example">
+                                                <button type="button" class="btn btn-outline-secondary"><i
+                                                        class="fa-regular fa-eye"></i></button>
+                                                <button type="button" class="btn btn-outline-success"><i
+                                                        class="fa-solid fa-pencil"></i></button>
+                                                <button type="button" class="btn btn-outline-danger"><i
+                                                        class="fa-solid fa-trash"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <!-- <th scope="row">2</th> -->
+                                        <td>
+                                            <h5 class="tetx-dark">
+                                                InfiniO 4.1 USG project #1
+                                            </h5>
+                                            <p>Created 14 July, 2021</p>
+                                        </td>
+                                        <td><span class="badge badge-success">Active</span></td>
+                                        <td>
+                                            <div class="btn-group" role="group" aria-label="Basic example">
+                                                <button type="button" class="btn btn-outline-secondary"><i
+                                                        class="fa-regular fa-eye"></i></button>
+                                                <button type="button" class="btn btn-outline-success"><i
+                                                        class="fa-solid fa-pencil"></i></button>
+                                                <button type="button" class="btn btn-outline-danger"><i
+                                                        class="fa-solid fa-trash"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <!-- <th scope="row">3</th> -->
+                                        <td>
+                                            <h5 class="tetx-dark">
+                                                InfiniO 4.2
+                                            </h5>
+                                            <p>Created 14 July, 2021</p>
+                                        </td>
+                                        <td><span class="badge badge-warning">Pending</span></td>
+                                        <td>
+                                            <div class="btn-group" role="group" aria-label="Basic example">
+                                                <button type="button" class="btn btn-outline-secondary"><i
+                                                        class="fa-regular fa-eye"></i></button>
+                                                <button type="button" class="btn btn-outline-success"><i
+                                                        class="fa-solid fa-pencil"></i></button>
+                                                <button type="button" class="btn btn-outline-danger"><i
+                                                        class="fa-solid fa-trash"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="float-left my-3">
+                                        <p class="text-dark">Showing 1 to 9 of 9 entries</p>
+                                    </div>
+                                    <div class="float-right my-3">
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                            <button type="button" class="btn btn-outline-primary">Previous</button>
+                                            <button type="button" class="btn btn-primary">1</button>
+                                            <button type="button" class="btn btn-outline-primary">Next</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script>
+            window.jQuery || document.write('<script src="/src/js/vendor/jquery-3.3.1.min.js"><\/script>')
+        </script>
+        <script src="/public/plugins/popper.js/dist/umd/popper.min.js"></script>
+        <script src="/public/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="/public/plugins/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
+        <script src="/public/plugins/select2/dist/js/select2.min.js"></script>
+        <script src="/public/plugins/summernote/dist/summernote-bs4.min.js"></script>
+        <script src="/public/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
+        <script src="/public/plugins/jquery.repeater/jquery.repeater.min.js"></script>
+        <script src="/public/plugins/mohithg-switchery/dist/switchery.min.js"></script>
+        <script src="/public/dist/js/theme.min.js"></script>
+        <script src="/public/js/form-advanced.js"></script>
+        <script src="/public/plugins/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script src="/public/plugins/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+        <script src="/public/js/datatables.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.13/dist/semantic.min.js"></script>
+        <script src="/public/dflip/js/dflip.min.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.5/pagination.css"
+            integrity="sha512-QmxybGIvkSI8+CGxkt5JAcGOKIzHDqBMs/hdemwisj4EeGLMXxCm9h8YgoCwIvndnuN1NdZxT4pdsesLXSaKaA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+        <script>
+            const dropdown = document.getElementsByClassName("dropdown-btn");
+            for (let i = 0; i < dropdown.length; i++) {
+                dropdown[i].addEventListener("click", function () {
+                    this.classList.toggle("active");
+                    let dropdownContent = this.nextElementSibling;
+                    if (dropdownContent.style.display === "block") {
+                        dropdownContent.style.display = "none";
+                    } else {
+                        dropdownContent.style.display = "block";
+                    }
+                });
+            }
+        </script>
+
+</body>
+
+</html>

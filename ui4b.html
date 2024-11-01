@@ -1,0 +1,802 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>OnwinTOP</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noimageindex, nofollow,noindex">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.13/dist/semantic.min.css">
+    <link href="/public/dflip/css/dflip.min.css" rel="stylesheet" type="text/css">
+    <link href="/public/dflip/css/themify-icons.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/public/plugins/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="/public/plugins/ionicons/dist/css/ionicons.min.css">
+    <link rel="stylesheet" href="/public/plugins/icon-kit/dist/css/iconkit.min.css">
+    <link rel="stylesheet" href="/public/plugins/perfect-scrollbar/css/perfect-scrollbar.css">
+    <link rel="stylesheet" href="/public/plugins/summernote/dist/summernote-bs4.css">
+    <link rel="stylesheet" href="/public/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
+    <link rel="stylesheet" href="/public/plugins/mohithg-switchery/dist/switchery.min.css">
+    <link rel="stylesheet" href="/public/dist/css/theme.min.css">
+    <script src="/src/js/vendor/modernizr-2.8.3.min.js"></script>
+    <link rel="stylesheet" href="/public/plugins/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="/public/plugins/select2/dist/css/select2.min.css">
+    <style>
+        .modal-body {
+            max-height: calc(100vh - 200px);
+            overflow-y: auto;
+        }
+
+        .modal1 {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal1-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+        }
+
+        .close1 {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close1:hover,
+        .close1:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        @media (min-width: 576px) {
+            .modal1-content {
+                max-width: 600px;
+                margin: 1.75rem auto;
+            }
+        }
+
+        .select2-selection {
+            width: 500px !important;
+        }
+
+        .nav-active {
+            border-bottom-width: 4px;
+            border-bottom-style: solid;
+        }
+
+        .search {
+            border-left: none !important;
+            border-color: #343a40;
+            border-radius: 1px !important;
+        }
+
+        .btn-search {
+            border-right: none !important;
+            border-radius: 1px !important;
+            height: 37px !important
+        }
+
+        .switch .btn-toggle {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .btn-toggle {
+            margin: 0 4rem;
+            padding: 0;
+            position: relative;
+            border: none;
+            height: 1.5rem;
+            width: 3rem;
+            border-radius: 1.5rem;
+            color: #6b7381;
+            background: #bdc1c8;
+        }
+
+        .btn-toggle:focus,
+        .btn-toggle.focus,
+        .btn-toggle:focus.active,
+        .btn-toggle.focus.active {
+            outline: none;
+        }
+
+        .btn-toggle:before,
+        .btn-toggle:after {
+            line-height: 1.5rem;
+            width: 4rem;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: absolute;
+            bottom: 0;
+            transition: opacity 0.25s;
+        }
+
+        .btn-toggle:before {
+            content: 'Off';
+            left: -4rem;
+        }
+
+        .btn-toggle:after {
+            content: 'On';
+            right: -4rem;
+            opacity: 0.5;
+        }
+
+        .btn-toggle>.handle {
+            position: absolute;
+            top: 0.1875rem;
+            left: 0.1875rem;
+            width: 1.125rem;
+            height: 1.125rem;
+            border-radius: 1.125rem;
+            background: #fff;
+            transition: left 0.25s;
+        }
+
+        .btn-toggle.active {
+            transition: background-color 0.25s;
+        }
+
+        .btn-toggle.active>.handle {
+            left: 1.6875rem;
+            transition: left 0.25s;
+        }
+
+        .btn-toggle.active:before {
+            opacity: 0.5;
+        }
+
+        .btn-toggle.active:after {
+            opacity: 1;
+        }
+
+        .btn-toggle.btn-sm:before,
+        .btn-toggle.btn-sm:after {
+            line-height: -0.5rem;
+            color: #fff;
+            letter-spacing: 0.75px;
+            left: 0.4125rem;
+            width: 2.325rem;
+        }
+
+        .btn-toggle.btn-sm:before {
+            text-align: right;
+        }
+
+        .btn-toggle.btn-sm:after {
+            text-align: left;
+            opacity: 0;
+        }
+
+        .btn-toggle.btn-sm.active:before {
+            opacity: 0;
+        }
+
+        .btn-toggle.btn-sm.active:after {
+            opacity: 1;
+        }
+
+        .btn-toggle.btn-xs:before,
+        .btn-toggle.btn-xs:after {
+            display: none;
+        }
+
+        .btn-toggle:before,
+        .btn-toggle:after {
+            color: #6b7381;
+        }
+
+        .btn-toggle.active {
+            background-color: #62d493;
+        }
+
+        .btn-toggle.btn-lg.btn-sm:before,
+        .btn-toggle.btn-lg.btn-sm:after {
+            line-height: 0.5rem;
+            color: #fff;
+            letter-spacing: 0.75px;
+            left: 0.6875rem;
+            width: 3.875rem;
+        }
+
+        .btn-toggle.btn-lg.btn-sm:before {
+            text-align: right;
+        }
+
+        .btn-toggle.btn-lg.btn-sm:after {
+            text-align: left;
+            opacity: 0;
+        }
+
+        .btn-toggle.btn-lg.btn-sm.active:before {
+            opacity: 0;
+        }
+
+        .btn-toggle.btn-lg.btn-sm.active:after {
+            opacity: 1;
+        }
+
+        .btn-toggle.btn-lg.btn-xs:before,
+        .btn-toggle.btn-lg.btn-xs:after {
+            display: none;
+        }
+
+        .btn-toggle.btn-sm {
+            margin: 0 0.5rem;
+            padding: 0;
+            position: relative;
+            border: none;
+            height: 1.5rem;
+            width: 3rem;
+            border-radius: 1.5rem;
+        }
+
+        .btn-toggle.btn-sm:focus,
+        .btn-toggle.btn-sm.focus,
+        .btn-toggle.btn-sm:focus.active,
+        .btn-toggle.btn-sm.focus.active {
+            outline: none;
+        }
+
+        .btn-toggle.btn-sm:before,
+        .btn-toggle.btn-sm:after {
+            line-height: 1.5rem;
+            width: 0.5rem;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.55rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: absolute;
+            bottom: 0;
+            transition: opacity 0.25s;
+        }
+
+        .btn-toggle.btn-sm:before {
+            content: 'Off';
+            left: -0.5rem;
+        }
+
+        .btn-toggle.btn-sm:after {
+            content: 'On';
+            right: -0.5rem;
+            opacity: 0.5;
+        }
+
+        .btn-toggle.btn-sm>.handle {
+            position: absolute;
+            top: 0.1875rem;
+            left: 0.1875rem;
+            width: 1.125rem;
+            height: 1.125rem;
+            border-radius: 1.125rem;
+            background: #fff;
+            transition: left 0.25s;
+        }
+
+        .btn-toggle.btn-sm.active {
+            transition: background-color 0.25s;
+        }
+
+        .btn-toggle.btn-sm.active>.handle {
+            left: 1.6875rem;
+            transition: left 0.25s;
+        }
+
+        .btn-toggle.btn-sm.active:before {
+            opacity: 0.5;
+        }
+
+        .btn-toggle.btn-sm.active:after {
+            opacity: 1;
+        }
+
+        .btn-toggle.btn-sm.btn-sm:before,
+        .btn-toggle.btn-sm.btn-sm:after {
+            line-height: -0.5rem;
+            color: #fff;
+            letter-spacing: 0.75px;
+            left: 0.4125rem;
+            width: 2.325rem;
+        }
+
+        .btn-toggle.btn-sm.btn-sm:before {
+            text-align: right;
+        }
+
+        .btn-toggle.btn-sm.btn-sm:after {
+            text-align: left;
+            opacity: 0;
+        }
+
+        .btn-toggle.btn-sm.btn-sm.active:before {
+            opacity: 0;
+        }
+
+        .btn-toggle.btn-sm.btn-sm.active:after {
+            opacity: 1;
+        }
+
+        .btn-toggle.btn-sm.btn-xs:before,
+        .btn-toggle.btn-sm.btn-xs:after {
+            display: none;
+        }
+
+        .btn-toggle.btn-xs {
+            margin: 0 0;
+            padding: 0;
+            position: relative;
+            border: none;
+            height: 1rem;
+            width: 2rem;
+            border-radius: 1rem;
+        }
+
+        .btn-toggle.btn-xs:focus,
+        .btn-toggle.btn-xs.focus,
+        .btn-toggle.btn-xs:focus.active,
+        .btn-toggle.btn-xs.focus.active {
+            outline: none;
+        }
+
+        .btn-toggle.btn-xs:before,
+        .btn-toggle.btn-xs:after {
+            line-height: 1rem;
+            width: 0;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: absolute;
+            bottom: 0;
+            transition: opacity 0.25s;
+        }
+
+        .btn-toggle.btn-xs:before {
+            content: 'Off';
+            left: 0;
+        }
+
+        .btn-toggle.btn-xs:after {
+            content: 'On';
+            right: 0;
+            opacity: 0.5;
+        }
+
+        .btn-toggle.btn-xs>.handle {
+            position: absolute;
+            top: 0.125rem;
+            left: 0.125rem;
+            width: 0.75rem;
+            height: 0.75rem;
+            border-radius: 0.75rem;
+            background: #fff;
+            transition: left 0.25s;
+        }
+
+        .btn-toggle.btn-xs.active {
+            transition: background-color 0.25s;
+        }
+
+        .btn-toggle.btn-xs.active>.handle {
+            left: 1.125rem;
+            transition: left 0.25s;
+        }
+
+        .btn-toggle.btn-xs.active:before {
+            opacity: 0.5;
+        }
+
+        .btn-toggle.btn-xs.active:after {
+            opacity: 1;
+        }
+
+        .btn-toggle.btn-xs.btn-sm:before,
+        .btn-toggle.btn-xs.btn-sm:after {
+            line-height: -1rem;
+            color: #fff;
+            letter-spacing: 0.75px;
+            left: 0.275rem;
+            width: 1.55rem;
+        }
+
+        .btn-toggle.btn-xs.btn-sm:before {
+            text-align: right;
+        }
+
+        .btn-toggle.btn-xs.btn-sm:after {
+            text-align: left;
+            opacity: 0;
+        }
+
+        .btn-toggle.btn-xs.btn-sm.active:before {
+            opacity: 0;
+        }
+
+        .btn-toggle.btn-xs.btn-sm.active:after {
+            opacity: 1;
+        }
+
+        .btn-toggle.btn-xs.btn-xs:before,
+        .btn-toggle.btn-xs.btn-xs:after {
+            display: none;
+        }
+
+        .btn-toggle.btn-secondary {
+            color: #6b7381;
+            background: #bdc1c8;
+        }
+
+        .btn-toggle.btn-secondary:before,
+        .btn-toggle.btn-secondary:after {
+            color: #6b7381;
+        }
+
+        .btn-toggle.btn-secondary.active {
+            background-color: #ff8300;
+        }
+
+        .arrow-container {
+            position: relative;
+            width: 100%;
+            text-align: center;
+        }
+
+        .arrow {
+            position: relative;
+            display: inline-block;
+            width: 2px;
+            background-color: #999999;
+            height: 100px;
+        }
+
+        .arrow::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: -5px;
+            width: 12px;
+            height: 12px;
+            background-color: #999999;
+            clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
+        }
+
+        .plus {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <header class="header-top" header-theme="light" style="padding-left: 0px !important;">
+            <div class="container-fluid">
+                <div class="d-flex justify-content-between">
+                    <div class="top-menu d-flex align-items-center">
+                        <button type="button" class="btn-icon mobile-nav-toggle d-lg-none"><span></span></button>
+                    </div>
+                    <div class="container-fluid">
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#">Video</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Discussion</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Engagement</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Rewards</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="top-menu d-flex align-items-center">
+                        <div class="dropdown">
+                            <a class="dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false"><img class="avatar"
+                                    src="/public/img/user.jpg" alt=""></a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="#"><i class="ik ik-power dropdown-icon"></i>
+                                    Logout</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="page-wrap">
+            <div class="app-sidebar colored" style="top: 8.6vh;">
+                <div class="sidebar-header" style="background-color: #000000;">
+                    <a class="header-brand" href="/">
+                        <h2 class="text-center">
+                            <strong>
+                                Onwin<span class="text" style="color: #00c8f8;">TOP</span>
+                            </strong>
+                        </h2>
+                    </a>
+                </div>
+
+                <div class="sidebar-content" style="background-color: #111111;">
+                    <div class="nav-container">
+                        <nav id="main-menu-navigation" class="navigation-main">
+                            <div class="nav-item">
+                                <a href="#"><i class="fa-regular fa-folder"></i> <span>Manage</span></a>
+                            </div>
+                            <div class="nav-item">
+                                <a href="#" class="menu-item">
+                                    <i class="fa-solid fa-clipboard-list"></i> <span>Plan</span>
+                                </a>
+                            </div>
+                            <div class="nav-item">
+                                <a href="#" class="menu-item">
+                                    <i class="fa-solid fa-bag-shopping"></i> <span>Engage</span>
+                                </a>
+                            </div>
+                            <div class="nav-item">
+                                <a href="#" class="menu-item">
+                                    <i class="fa-solid fa-chart-line"></i> <span>Analyze</span>
+                                </a>
+                            </div>
+                            <hr class="border opacity-50" style="border: 1px solid #181818 !important;">
+                            <div class="nav-item">
+                                <a href="#"><i class="fa-solid fa-gear"></i> <span>Settings</span></a>
+                            </div>
+                            <div class="nav-item">
+                                <a href="#" class="menu-item">
+                                    <i class="fa-solid fa-dollar-sign"></i> <span>Pricing</span>
+                                </a>
+                            </div>
+                            <div class="nav-item">
+                                <a href="#" class="menu-item">
+                                    <i class="fa-regular fa-star"></i> <span>Partners</span>
+                                </a>
+                            </div>
+                            <div class="nav-item">
+                                <a href="#" class="menu-item">
+                                    <i class="fa-solid fa-question"></i> <span>Support</span>
+                                </a>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="main-content" style="min-height: 100vh !important;">
+                <div class="container-fluid">
+                    <nav class="navbar navbar-expand-lg" style="background-color: #fefefe; margin: -30px;">
+                        <a class="navbar-brand" href="ui4.html"><i class="fa-solid fa-chevron-left"></i></a>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item navbar-brand active">
+                                    <a class="nav-link text-warning" href="#"><i class="fa-solid fa-gear"></i></a>
+                                </li>
+                                <li class="nav-item navbar-brand">
+                                    <input type="text" class="form-control" name="" id=""
+                                        value="B2B Testimonial 21 May 2023">
+                                </li>
+                            </ul>
+                            <form class="form-inline my-2 my-lg-0 switch">
+                                <button type="button" class="btn btn-sm btn-toggle active" data-toggle="button"
+                                    aria-pressed="true" autocomplete="off">
+                                    <div class="handle"></div>
+                                </button>
+                            </form>
+                        </div>
+                    </nav>
+                    <div style="margin-top: 60px;">
+                        <div class="card mb-0">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="" style="display: inline-block;">
+                                            <img src="https://dummyimage.com/50x50/000/fff.jpg" class="img-fluid"
+                                                style="display: inline-block;">
+                                        </div>
+                                        <div class="mx-3" style="display: inline-block;">
+                                            <p class="text-secondary mb-0">Trigger</p>
+                                            <h6 class="card-title mb-0">
+                                                <strong>1.Every Day</strong>
+                                            </h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 text-right">
+                                        <a href="#" class="text-secondary"><i
+                                                class="fa-solid fa-circle-question"></i></a><br><br><br>
+                                        <a href="#" class="text-secondary"><i class="fa-solid fa-ellipsis"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="arrow-container">
+                            <div class="arrow"></div>
+                            <div class="plus"><i class="fa-solid fa-circle-plus text-primary"></i></div>
+                        </div>
+                        <div class="card mb-0">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="" style="display: inline-block;">
+                                            <img src="https://dummyimage.com/50x50/000/fff.jpg" class="img-fluid"
+                                                style="display: inline-block;">
+                                        </div>
+                                        <div class="mx-3" style="display: inline-block;">
+                                            <p class="text-secondary mb-0">Action</p>
+                                            <h6 class="card-title mb-0">
+                                                <strong>2.Crawl AliExpress Products</strong>
+                                            </h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 text-right">
+                                        <a href="#" class="text-secondary"><i
+                                                class="fa-solid fa-circle-question"></i></a><br><br><br>
+                                        <a href="#" class="text-secondary"><i class="fa-solid fa-ellipsis"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="arrow-container">
+                            <div class="arrow"></div>
+                            <div class="plus"><i class="fa-solid fa-circle-plus text-primary"></i></div>
+                        </div>
+                        <div class="card mb-0">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="" style="display: inline-block;">
+                                            <img src="https://dummyimage.com/50x50/000/fff.jpg" class="img-fluid"
+                                                style="display: inline-block;">
+                                        </div>
+                                        <div class="mx-3" style="display: inline-block;">
+                                            <p class="text-secondary mb-0">Action</p>
+                                            <h6 class="card-title mb-0">
+                                                <strong>3.Generate Video Based on AliExpress Products</strong>
+                                            </h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 text-right">
+                                        <a href="#" class="text-secondary"><i
+                                                class="fa-solid fa-circle-question"></i></a><br><br><br>
+                                        <a href="#" class="text-secondary"><i class="fa-solid fa-ellipsis"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="arrow-container">
+                            <div class="arrow"></div>
+                            <div class="plus"><i class="fa-solid fa-circle-plus text-primary"></i></div>
+                        </div>
+                        <div class="card mb-0">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="" style="display: inline-block;">
+                                            <img src="https://dummyimage.com/50x50/000/fff.jpg" class="img-fluid"
+                                                style="display: inline-block;">
+                                        </div>
+                                        <div class="mx-3" style="display: inline-block;">
+                                            <p class="text-secondary mb-0">Action</p>
+                                            <h6 class="card-title mb-0">
+                                                <strong>4.Map AliExpress to Shopify</strong>
+                                            </h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 text-right">
+                                        <a href="#" class="text-secondary"><i
+                                                class="fa-solid fa-circle-question"></i></a><br><br><br>
+                                        <a href="#" class="text-secondary"><i class="fa-solid fa-ellipsis"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="arrow-container">
+                            <div class="arrow"></div>
+                            <div class="plus"><i class="fa-solid fa-circle-plus text-primary"></i></div>
+                        </div>
+                        <div class="card mb-0">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="" style="display: inline-block;">
+                                            <img src="https://dummyimage.com/50x50/000/fff.jpg" class="img-fluid"
+                                                style="display: inline-block;">
+                                        </div>
+                                        <div class="mx-3" style="display: inline-block;">
+                                            <p class="text-secondary mb-0">Action</p>
+                                            <h6 class="card-title mb-0">
+                                                <strong>5.Make Video Shoppable</strong>
+                                            </h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 text-right">
+                                        <a href="#" class="text-secondary"><i
+                                                class="fa-solid fa-circle-question"></i></a><br><br><br>
+                                        <a href="#" class="text-secondary"><i class="fa-solid fa-ellipsis"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="arrow-container">
+                            <div class="arrow"></div>
+                            <div class="plus">
+                                <i class="fa-solid fa-circle-plus text-primary"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        window.jQuery || document.write('<script src="/src/js/vendor/jquery-3.3.1.min.js"><\/script>')
+    </script>
+    <script src="/public/plugins/popper.js/dist/umd/popper.min.js"></script>
+    <script src="/public/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/public/plugins/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
+    <script src="/public/plugins/select2/dist/js/select2.min.js"></script>
+    <script src="/public/plugins/summernote/dist/summernote-bs4.min.js"></script>
+    <script src="/public/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
+    <script src="/public/plugins/jquery.repeater/jquery.repeater.min.js"></script>
+    <script src="/public/plugins/mohithg-switchery/dist/switchery.min.js"></script>
+    <script src="/public/dist/js/theme.min.js"></script>
+    <script src="/public/js/form-advanced.js"></script>
+    <script src="/public/plugins/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="/public/plugins/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="/public/js/datatables.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.13/dist/semantic.min.js"></script>
+    <script src="/public/dflip/js/dflip.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.5/pagination.css"
+        integrity="sha512-QmxybGIvkSI8+CGxkt5JAcGOKIzHDqBMs/hdemwisj4EeGLMXxCm9h8YgoCwIvndnuN1NdZxT4pdsesLXSaKaA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+    <script>
+        const dropdown = document.getElementsByClassName("dropdown-btn");
+        for (let i = 0; i < dropdown.length; i++) {
+            dropdown[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                let dropdownContent = this.nextElementSibling;
+                if (dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                } else {
+                    dropdownContent.style.display = "block";
+                }
+            });
+        }
+    </script>
+
+</body>
+
+</html>
